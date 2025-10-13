@@ -95,11 +95,11 @@ console.log('--------------------------------------------');
 let empoyeefind104=employees.find((element)=>element.empId==104)
 let employee104=empoyeefind104.worklog
 
+console.log(employee104)
 
 
 
-
-console.log('--------------------------------------------');
+console.log('----fff--------------------------------------------');
 
 // 8. Print total working hours of employee with empId 104
 let storeWork=employee104.reduce((acc,curr)=>acc+curr.hours,0)
