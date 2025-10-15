@@ -107,15 +107,15 @@ console.log(nameofempProj);
 
 console.log("--------------------------");
 // 3️⃣ Print all managers' names in uppercase.
-projects.forEach((element)=>{
-    console.log(element.manager.toUpperCase())
-})
-console.log('-----------------------')
+projects.forEach((element) => {
+  console.log(element.manager.toUpperCase());
+});
+console.log("-----------------------");
 
 // 4️⃣ Print total budget of all projects. (use reduce)
-totalBudget=projects.reduce((acc,curr)=>acc+curr.budget,0)
-console.log(totalBudget)
-console.log('------------------------')
+totalBudget = projects.reduce((acc, curr) => acc + curr.budget, 0);
+console.log(totalBudget);
+console.log("------------------------");
 
 // 5️⃣ Print all project names sorted by budget (descending order).
 
@@ -123,76 +123,118 @@ console.log('------------------------')
 //     forSorting=element.toSorted((a,b)=>b.projectName-a.projectName)
 //     console.log(forSorting)
 // })
-forSort=projects.toSorted((a,b)=>b.budget-a.budget)
-forSort.forEach((element)=>{
-    console.log(element.projectName)
-})
-console.log('---------------------')
+forSort = projects.toSorted((a, b) => b.budget - a.budget);
+forSort.forEach((element) => {
+  console.log(element.projectName);
+});
+console.log("---------------------");
 // 6️⃣ Print total number of employees across all projects. (use map + flat + length)
- totalEmp=projects.map((element)=>element.team)
- flatEmp=totalEmp.flat(Infinity)
- console.log(flatEmp.length)
- console.log('-----------------------')
-
-
+totalEmp = projects.map((element) => element.team);
+flatEmp = totalEmp.flat(Infinity);
+console.log(flatEmp.length);
+console.log("-----------------------");
 
 // 7️⃣ Print all unique roles (Developer, Tester, Designer, etc.) across projects. (use map + flat + new Set)
-forRole=projects.map((eachRole)=>eachRole.team)
-flatRole=forRole.flat(Infinity)
-filterRole=flatRole.filter((element)=>element.role=='Designer' || element.role=='Tester' || element.role=='Developer')
-console.log(filterRole)
-
+forRole = projects.map((eachRole) => eachRole.team);
+flatRole = forRole.flat(Infinity);
+filterRole = flatRole.filter(
+  (element) =>
+    element.role == "Designer" ||
+    element.role == "Tester" ||
+    element.role == "Developer"
+);
+console.log(filterRole);
 
 // 8️⃣ Print names of employees whose rating > 4.5. (use map + flat + filter)
-rating=flatRole.filter((element)=>element.rating>4.5)
-rating.forEach((element)=>
-    console.log(element.empName)
-)
-console.log('---------------')
+rating = flatRole.filter((element) => element.rating > 4.5);
+rating.forEach((element) => console.log(element.empName));
+console.log("---------------");
 // 9️⃣ Print total working hours of project pid = 2. (use find + reduce)
-totalWorking=projects.find((element)=>element.pid==2)
-console.log(totalWorking)
-totalpd2=totalWorking.team.reduce((acc,curr)=>acc+curr.hours,0)
-console.log(totalpd2)
-console.log('-----------------------')
+totalWorking = projects.find((element) => element.pid == 2);
+console.log(totalWorking);
+totalpd2 = totalWorking.team.reduce((acc, curr) => acc + curr.hours, 0);
+console.log(totalpd2);
+console.log("-----------------------");
 
 // 🔟 Print employee with highest rating overall. (use map + flat + reduce)
-let emp=''
+let emp = "";
 
- highRate=projects.map((element)=>element.team)
- flatRate=highRate.flat(Infinity)
- totalRating=flatRate.reduce((acc,curr)=>acc.rating>curr.rating?acc:curr)
- console.log(totalRating.empName)
- console.log('-----------------')
+highRate = projects.map((element) => element.team);
+flatRate = highRate.flat(Infinity);
+
+totalRating = flatRate.reduce((acc, curr) =>
+  acc.rating > curr.rating ? acc : curr
+);
+console.log(totalRating.empName);
+console.log("-----------------");
 
 // 11️⃣ Check if any project is still 'in-progress'. (use some)
 
-checkProgress=projects.some((element)=>element.status=='in-progress')
-console.log(checkProgress)
-console.log('----------------------------')
+checkProgress = projects.some((element) => element.status == "in-progress");
+console.log(checkProgress);
+console.log("----------------------------");
 // 12️⃣ Check if all projects have budget above 5 lakh. (use every)
 
-above5=projects.every((element)=>element.budget>500000)
-console.log(above5)
-console.log('-----------------')
+above5 = projects.every((element) => element.budget > 500000);
+console.log(above5);
+console.log("-----------------");
 
 // 13️⃣ Print all employees who worked more than 100 hours. (use map + flat + filter)
 
-filter100=flatRate.filter((element)=>element.hours>100)
-filter100.forEach((elementname)=>{
-    console.log(elementname.empName)
-})
-console.log('-------------')
+filter100 = flatRate.filter((element) => element.hours > 100);
+filter100.forEach((elementname) => {
+  console.log(elementname.empName);
+});
+console.log("-------------");
 // 14️⃣ Print total working hours of each project as an object: { projectName, totalHours }. (use map + reduce)
 
+let eachProj = projects.map((element) => {
+  let obj = [];
+  let proname = element.projectName;
+
+  let totalhrs = element.team.reduce((acc, curr) => acc + curr.hours, 0);
+  obj[proname] = totalhrs;
+  return obj;
+});
+console.log(eachProj);
+console.log("----------------");
+
 // 15️⃣ Print the project that has the highest total team hours. (nested reduce logic)
+    let projecthigh=projects.map((elementPro)=>elementPro.team)
+    let flatpro=projecthigh.flat(Infinity)
+   
+    // let reduce1=flatpro.reduce((acc,curr)=>acc+curr.hours,0)
+    let reduce2=flatpro.reduce((acc,curr)=>acc.hours>acc.hours?acc:curr)
+    console.log(reduce2.empName)
+
 
 // 16️⃣ Create a new array of all employee names (flat list). (use map + flat + map)
+nameof = projects.map((element) => element.team);
+flatname = nameof.flat(Infinity);
+
+// empmap = flatname.map((elementof) => console.log(elementof.empName));
+console.log("----------------------------");
 
 // 17️⃣ Print average rating of all Developers across all projects. (use map + flat + filter + reduce)
 
+let filteravg = flatRate.filter((element) => element.role == "Developers");
+avgfind = filteravg.reduce((acc, curr) => acc + curr["rating"], 0);
+// console.log(filteravg);
+console.log("-----------");
+
 // 18️⃣ Print all testers' names whose project status is 'completed'. (use filter + map + flat + filter)
+let filterpro = projects.filter((element) => element.status == "completed");
+mapfilter = filterpro.map((ele) => ele.team);
+flatfilter = mapfilter.flat(Infinity);
+tester = flatfilter.filter((elem) => elem.role == "Tester");
+// console.log(tester);
 
 // 19️⃣ Print all team members sorted by their rating (highest → lowest). (use map + flat + sort)
+sortteam=flatEmp.toSorted((a,b)=>a.rating-b.rating)
+// sortteam.forEach((eleme)=>console.log(eleme.empName,eleme.rating))
 
+console.log('=----')
 // 20️⃣ Print manager name with the project that has the largest team size. (use reduce)
+
+   let manager=projects.reduce((acc,curr)=>acc.team.length>curr.team.length?acc:curr)
+   console.log(manager.manager)
