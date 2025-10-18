@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom</title>
+  </head>
+  <body>
+    <h1 id="one">HELLO</h1>
+    <h1 class="Two">Hai</h1>
+    <h1 class="Two">hemm</h1>
+    <button onclick="btn()">click</button>
+
+    <input id="result" type="text" />
+    <h3 id="display"></h3>
+  
+  </body>
+  <script>
+    function btn() {
+      document.querySelector(".Two").innerHTML = "WELCOME";
+      document.getElementById("result").value;
+
+      document.getElementById("display").innerHTML = document.getElementById("result").value;
+      document.getElementById("display").innerHTML=`<div>   <img src="https://tse4.mm.bing.net/th/id/OIP.HxV79tFMPfBAIo0BBF-sOgHaEy?pid=Api&P=0&h=220" alt=""> </div>`
+    }
+  </script>
+</html>
