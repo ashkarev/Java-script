@@ -13,41 +13,41 @@
     <div class="calculator-border rounded-2 m-5">
         <h3 class="ms-5">Calculator</h3>
         
-        <div class="for-input  mb-3 ">
-            <input class="mt-3 ms-3" type="text" placeholder="0">
+        <div  class="for-input  mb-3 ">
+            <input id="result" class="mt-3 ms-3" type="text" placeholder="0">
         </div>
-        <div class="row-class row text-center gap-2 mt-2 text-light  ">
-            <button class=" col btn btn-secondary button-col ">7</button>
-            <button class="col btn btn-secondary button-col ">8</button>
-            <button class="col btn btn-secondary button-col">9</button>
-            <button class="col btn btn-secondary button-col">x</button>
+        <div   class="row-class row text-center gap-2 mt-2 text-light  ">
+            <button onclick="displayData('7')" class=" col btn btn-secondary button-col ">7</button>
+            <button onclick="displayData('8')" class="col btn btn-secondary button-col ">8</button>
+            <button onclick="displayData('9')" class="col btn btn-secondary button-col">9</button>
+            <button onclick="displayData('*')" class="col btn btn-secondary button-col">x</button>
             
         </div>
          <div class="row-class row text-center gap-2 mt-2 text-light  ">
-            <button class=" col btn btn-secondary button-col ">4</button>
-            <button class="col btn btn-secondary button-col ">5</button>
-            <button class="col btn btn-secondary button-col">6</button>
-            <button class="col btn btn-secondary button-col">x</button>
+            <button onclick="displayData('4')" class=" col btn btn-secondary button-col ">4</button>
+            <button onclick="displayData('5')" class="col btn btn-secondary button-col ">5</button>
+            <button onclick="displayData('6')" class="col btn btn-secondary button-col">6</button>
+            <button onclick="displayData('-')" class="col btn btn-secondary button-col">-</button>
             
         </div>
          <div class="row-class row text-center gap-2 mt-2 text-light  ">
-            <button class=" col btn btn-secondary button-col ">1</button>
-            <button class="col btn btn-secondary button-col ">2</button>
-            <button class="col btn btn-secondary button-col">3</button>
-            <button class="col btn btn-secondary button-col">+</button>
+            <button onclick="displayData('1')" class=" col btn btn-secondary button-col ">1</button>
+            <button onclick="displayData('2')" class="col btn btn-secondary button-col ">2</button>
+            <button onclick="displayData('3')" class="col btn btn-secondary button-col">3</button>
+            <button onclick="displayData('+')" class="col btn btn-secondary button-col">+</button>
             
         </div>
          <div class="row-class row text-center gap-2 mt-2 text-light  ">
-            <button class=" col btn btn-secondary button-col ">AC</button>
-            <button class="col btn btn-secondary button-col ">0</button>
-            <button class="col btn btn-secondary button-col">÷</button>
-            <button class="col btn btn-secondary button-col">=</button>
+            <button onclick="clearValue()" class=" col btn btn-secondary button-col ">AC</button>
+            <button onclick="displayData('0')" class="col btn btn-secondary button-col ">0</button>
+            <button onclick="displayData('/')" class="col btn btn-secondary button-col">÷</button>
+            <button onclick="calculate()" class="col btn btn-secondary button-col">=</button>
             
         </div>
          <div class="row-class row text-center gap-2 mt-2 text-light  ">
-            <button class=" col-4 btn btn-secondary button-col "><-</button>
+            <button onclick="LastDigit()" class=" col-4 btn btn-secondary button-col "><-</button>
           
-            
+         in 
         </div>
       
 
@@ -55,4 +55,5 @@
     </div>
     
 </body>
+<script src="./index.js"></script>
 </html>
