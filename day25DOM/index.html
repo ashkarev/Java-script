@@ -3,28 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM</title>
-  </head>
+    <title>DOM</title></head
+  >w
   <body>
     <h1 id="hey">Hello World</h1>
     <h1 class="hel">hey</h1>
 
     <h4>humm</h4>
     <button onclick="btnclick()">CLICK ME</button>
+
+    <p class="para">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias modi
+      dolorum nulla alias asperiores voluptates, temporibus incidunt facere
+      maxime minus fugit aliquid labore totam sed tempora eligendi dolor
+      consequatur natus.
+    </p>
+
+    <button onclick="hide()">hide</button>
+    <button onclick="show()">show</button>
+
+    <div class="images">
+      <img
+        src="https://static.vecteezy.com/system/resources/thumbnails/030/634/635/small/close-up-of-a-cute-baby-elephant-with-textured-background-and-space-for-text-background-image-ai-generated-photo.jpg"
+        alt=""
+      />
+    </div>
+    <button onclick="firstImage()">firstImage</button>
+    <button onclick="SecondImage()">Second Image</button>
+    
   </body>
   <script>
     function btnclick() {
-
-        //id
-      document.getElementById("hey").innerHTML='WELCOME ALL'
-      document.getElementById('hey').style.color='green'
+      //id
+      document.getElementById("hey").innerHTML = "WELCOME ALL";
+      document.getElementById("hey").style.color = "green";
       //class
-      document.getElementsByClassName("hel")[0].innerHTML='WELCOME 2'
-      
+      document.getElementsByClassName("hel")[0].innerHTML = "WELCOME 2";
+
       //tagName
-      document.getElementsByTagName('h4')[0].innerHTML='WELCOME3'
-      document.getElementsByTagName('h4')[0].style.display='none'
+      document.getElementsByTagName("h4")[0].innerHTML = "WELCOME3";
+      document.getElementsByTagName("h4")[0].style.display = "none";
     }
+
+    const hide = () => {
+      document.getElementsByClassName("para")[0].style.display = "none";
+    };
+
+    const show = () => {
+      document.getElementsByClassName("para")[0].style.display = "block";
+    };
+
+    const firstImage = () => {
+      document.getElementsByClassName(
+        "images"
+      )[0].innerHTML = `  <img src=https://static.vecteezy.com/system/resources/thumbnails/030/634/635/small/close-up-of-a-cute-baby-elephant-with-textured-background-and-space-for-text-background-image-ai-generated-photo.jpg " alt="">`;
+    };
+
+    const SecondImage = () => {
+      document.getElementsByClassName(
+        "images"
+      )[0].innerHTML = `  <img src= "https://static.vecteezy.com/system/resources/thumbnails/054/790/173/small_2x/heartwarming-moment-of-elephant-splashing-water-in-river-glowing-natural-light-creates-joyful-and-serene-scene-perfect-for-world-animal-day-photo.jpg" alt="">`;
+    };
   </script>
 </html>
-  

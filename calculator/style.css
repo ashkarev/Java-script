@@ -6,6 +6,7 @@
     
     width: 250px;
     border: 2px solid black;
+    box-shadow: 5px 1px 1px 1px rgb(0, 0, 0);
     padding: 20px;
      /* background-color: rgb(206, 56, 11); */
 }
