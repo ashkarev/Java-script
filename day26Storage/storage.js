@@ -1,5 +1,3 @@
-
-
 const items=()=>{
 
     try {
@@ -13,6 +11,8 @@ const items=()=>{
     console.log(jso)
 
     localStorage.setItem('User',jso)
+    window.location='./local.html'
+  
         
     } catch (error) {
         console.log(error)
