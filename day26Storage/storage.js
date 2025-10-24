@@ -17,6 +17,6 @@ const items=()=>{
     } catch (error) {
         console.log(error)
         alert("error Ocuured")
-    }
+    }                                                       
   
 }
