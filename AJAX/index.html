@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+
+    <h1>AJAX</h1>
+    
+</body>
+<script>
+    //stage-0==create a new xhmlhttp req
+    let xmlobj=new XMLHttpRequest()
+
+    //stage-1==giving configuration
+    xmlobj.open('get','https://dummyjson.com/products')
+
+
+    //stage-2==req sending
+    xmlobj.send()
+
+    //stage-3==server recieve
+
+    //stage-4==responce recieve
+
+    xmlobj.onreadystatechange=()=>{
+        if(xmlobj.readyState==4 && xmlobj.status==200){
+            let apiobj=xmlobj.response
+            apiobj=JSON.parse(apiobj)
+            console.log(apiobj)
+        }
+    }
+    
+//all these stages called READY STATE
+</script>
+</html>
