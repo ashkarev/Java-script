@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <h1>FETCH</h1>
+     <table class="table table-striped-columns container">
+  <thead>
+    <tr>
+      <th scope="col">NO</th>
+      <th scope="col">USERID</th>
+      <th scope="col">TODO</th>
+      <th scope="col">COMPLETED</th>
+      <th scope="col">COMPLETED</th>
+    </tr>
+  </thead>
+  <tbody id="result">
+   
+ 
+  </tbody>
+</table>
+    
+</body>
+<script>
+    fetch('https://jsonplaceholder.typicode.com/comments').then((res)=>{
+        console.log(res)
+        res.json().then((res)=>{
+
+            res.map((eachtodo)=>(
+       
+                result.innerHTML+=` <th scope="row">${eachtodo.postId}</th>
+      <td>${eachtodo.id}</td>
+      <td>${eachtodo.name}</td>
+      <td>${eachtodo.email}</td>
+      <td>${eachtodo.body}</td>
+      
+          </tr>`
+            ))
+        })
+        }).catch((err)=>{
+            console.log(err)
+    }).catch((err)=>{
+        console.log(err)
+    })
+    
+</script>
+</html>
