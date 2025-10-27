@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+     <style>
+        body{
+            overflow-x: hidden;
+        }
+     </style>
 </head>
-<body>
-    <h1>quotes</h1>
+<body class="bg-secondary">
+    <h1 class="text-center text-light">quotes</h1>
+    <div id="result" class="row gap-3  justify-content-center">
+
+    </div>
+<div></div>
+
     
 </body>
 <script>
@@ -15,7 +25,30 @@
     obj.open('get','https://dummyjson.com/quotes')
     obj.send()
 
-    
+    obj.onreadystatechange=()=>{
+        if(obj.readyState==4&&obj.status==200){
+      
+            let store=obj.response
+            storejson=JSON.parse(store)
+            console.log(storejson.quotes)
+           
+               storejson.quotes.map((data)=>(
+                result.innerHTML+=`<div class="col-3"><div class="card col-3 " style="width: 18rem;">
+ 
+  <div class="card-body ">
+     <img src=
+     "https://tse1.mm.bing.net/th/id/OIP.QKEwEVJlylLFZ4L75yhLPAHaEb?pid=Api&P=0&h=220" class="card-img-top" alt="...">
+    <h5 class="card-title">${data.author}</h5>
+    <p class="card-text">${data.quote}</p>
+    <a href="#" class="btn btn-warning ">visit</a>
+  </div>
+</div></div>`
+               ))
+
+        }
+    }
+
+
     
 </script>
 
