@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div  class="d-flex justify-content-center gap-5 align-center mt-5">
+         <div >
+           <input id="inputValue" type="text" class="form-control"placeholder="enter a book name">
+    </div>
+    <button onclick="onButton()" class="btn btn-warning">submit</button> 
+
+</div>
+    <div id="result"class="text-center">
+
+    </div>
+    
+   
+    
+</body>
+<script>
+    const onButton= async()=>{
+          
+        if(inputValue!==''){
+
+       apiResponce=await   fetch(`https://openlibrary.org/search.json?title=${inputValue.value}`)
+     apiResponce=await apiResponce.json()
+    //  console.log(apiResponce.docs)
+     let forDocs=apiResponce.docs
+    //  console.log(forDocs)
+     let storeApi=forDocs[0]
+     console.log(storeApi)
+     bookName=storeApi.title
+
+    
+     result.innerHTML+=`<h5>name: ${bookName}</h5>
+     <h5>Author:${storeApi.author_name}</h5>
+     <h5>year: ${storeApi.first_publish_year}</h5>
+     `
+    
+
+        }else{
+            alert('Enter a book Name')
+        }
+
+
+
+    }
+  
+</script>
+
+</html>

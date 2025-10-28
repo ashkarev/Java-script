@@ -27,12 +27,61 @@
         Search
       </button>
     </div>
+    <div id="result">
+
+    </div>
+    
+
   </body>
   <script>
-    const onSearchClick = () => {
-      if (countryInput.value !== "")
-       {
+    const onSearchClick = async () => {
+      if (countryInput.value !== "") {
 
+        //api calling
+        let apiResponce = await fetch(
+          `https://restcountries.com/v3.1/name/${countryInput.value}`
+        );
+        let data = await apiResponce.json();
+       
+        // console.log(data[0]);
+     if(apiResponce.status==200){
+
+         //responce
+
+           fordata=data[0]
+        //    console.log(fordata)
+           let CurrencyName=Object.keys(fordata.currencies)[0]
+           let offCurr= fordata['currencies'][CurrencyName]['name']
+           
+           let forLang=Object.keys(fordata.languages)[0]
+           console.log(forLang)
+           finallang=fordata['languages'][forLang]
+        //    console.log(finallang)
+       
+           result.innerHTML=`<div class="container text-light d-flex justify-content-around mt-5">
+        <div>
+            <h2>Country Name: ${fordata.name.common}</h2>
+        <h2>Official Name: ${fordata.name.official}</h2>
+        <h2>Capital: ${fordata.capital }</h2>
+        <h2> Currency: ${offCurr} </h2>
+        </div>
+        <div>
+            <h2>Language: ${finallang[0][1]} </h2>
+        <h2>Population: ${fordata.population}</h2>
+        <h2>Timezone: ${fordata.timezones}</h2>
+
+        <img src="${fordata.flags.png}" alt="flag">
+        </div>
+        
+        
+    </div>` 
+        
+        
+        
+     }else{
+        alert(data.message)
+     }
+       
       } else {
         alert("Enter a Country");
       }
