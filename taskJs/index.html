@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+   
+</style>
+<body class="bg-dark text-light">
+    <h1 class="text-center mt-5">STUDENT MANAGER</h1>
+    <div class="d-flex justify-content-center gap-5 mt-5">
+
+       <input id="uname" placeholder="enter your name" type="text"class="form-control w-25">
+    <input id="uage" placeholder="Enter your age" type="number" class="form-control w-25">
+    <input id="uCourse" placeholder="enter your  course" type="text" class="form-control w-25"> 
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+    <button onclick="addStudent()" class="btn p-1 btn-outline-warning w-25">Add</button>
+
+    </div>
+    <table class="table container mt-5 table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Course</th>
+      <th scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody id="result">
+   
+ 
+  </tbody>
+</table>
+    
+    
+</body>
+<script>
+
+    let StudentDetails=JSON.parse(localStorage.getItem('students')) ||[]
+
+    const addStudent=()=>{
+     let    name=uname.value
+      let  age=uage.value
+       let course=uCourse.value
+        // console.log(name,age,course)
+
+        //push to student data
+        let studentObj={name,age,course}
+        StudentDetails.push(studentObj)
+        // console.log(StudentDetails)
+  //tolocal Storage
+        localStorage.setItem('students',JSON.stringify(StudentDetails))
+        console.log(StudentDetails)
+
+    }
+    const StudentDisplay=()=>{
+        StudentDetails.map((eachData,indexVal)=>(
+            result.innerHTML+=` <tr>
+      <th scope="row">1</th>
+      <td>${eachData.name}</td>
+      <td>${eachData.age}</td>
+      <td>@${eachData.course}</td>
+      <td><button onclick="editStudent(${indexVal})" class="p-1 rounded-circle border-0 btn"><i class="fa-solid fa-user-pen text-success"></i></button>
+    <button onclick="studentdelete(${indexVal})" class="border-0 btn"><i class="fa-solid fa-trash text-danger"></i></button></td>
+      
+    </tr>`
+        ))
+    }
+
+    StudentDisplay()
+
+    const studentdelete =(indexVal)=>{
+        console.log("object")
+        console.log(StudentDetails[indexVal])
+        StudentDetails.splice(indexVal,1)
+        localStorage.setItem('students',JSON.stringify(StudentDetails))
+
+    }
+    const editStudent=(indexVal)=>{
+        let storedData=StudentDetails[indexVal]
+        uname.value=storedData.name
+        uage.value=storedData.age
+        uCourse.value=storedData.course
+        studentdelete(indexVal)
+    }
+
+
+</script>
+</html>
