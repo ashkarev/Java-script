@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inputId" type="text">
+    <button onclick="AddItem()" id="btnId">submt</button>
+    <div id="result">
+
+    </div>
+</body>
+<script>
+    let storeVal=JSON.parse(localStorage.getItem('storage'))||[]
+    const AddItem=()=>{
+       input =inputId.value
+       let forObj={input}
+       storeVal.push(forObj)
+       localStorage.setItem('storage',JSON.stringify(storeVal))
+       console.log(input)
+
+
+    }
+    const displayval=()=>{
+        storeVal.map((data,indexVal)=>(
+        result.innerHTML+=`<h1>${data.input}</h1>
+    <button onclick="forDelete(${indexVal})">del</button>
+    <button onclick="forUpdate(${indexVal})">update</button>
+
+        `
+
+        ))
+    }
+    displayval()
+    const forDelete=(indexVal)=>{
+        storeVal.splice(indexVal,1)
+        localStorage.setItem('storage',JSON.stringify(storeVal))
+
+    }
+    const forUpdate=(indexVal)=>{
+       let storeData=storeVal[indexVal]
+        inputId.value=storeData.input
+        forDelete(indexVal)
+       
+    }
+</script>
+</html>

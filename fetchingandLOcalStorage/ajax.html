@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result">
+
+    </div>
+    
+</body>
+<script>
+    let obj=new XMLHttpRequest()
+    obj.open('get','https://dummyjson.com/products')
+    obj.send()
+
+
+ obj.onreadystatechange=()=>{
+    if(obj.readyState==4&&obj.status==200){
+      let  storeRes=obj.response
+         storeRes=JSON.parse(storeRes)
+      let  data=storeRes.products
+      data.map((each)=>(
+        result.innerHTML+=``
+        
+      ))
+    }
+ }
+
+</script>
+</html>
